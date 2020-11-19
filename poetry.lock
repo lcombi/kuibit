@@ -209,6 +209,17 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
+name = "configargparse"
+version = "1.2.3"
+description = "A drop-in replacement for argparse that allows options to also be set via config files and/or environment variables."
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+
+[package.extras]
+yaml = ["pyyaml"]
+
+[[package]]
 name = "configobj"
 version = "5.0.6"
 description = "Config file reading, writing and validation."
@@ -1542,7 +1553,7 @@ full = ["numba", "lalsuite", "pycbc"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6"
-content-hash = "fe730c23967656464581b761a86bad47aff3622221a66fbe040871d39c8459fe"
+content-hash = "d454330aae283f6a69fd94d25c5ddde4bdbc103b024fda42e9311e4fa364514d"
 
 [metadata.files]
 alabaster = [
@@ -1679,6 +1690,9 @@ click = [
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
     {file = "colorama-0.4.4.tar.gz", hash = "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b"},
+]
+configargparse = [
+    {file = "ConfigArgParse-1.2.3.tar.gz", hash = "sha256:edd17be986d5c1ba2e307150b8e5f5107aba125f3574dddd02c85d5cdcfd37dc"},
 ]
 configobj = [
     {file = "configobj-5.0.6.tar.gz", hash = "sha256:a2f5650770e1c87fb335af19a9b7eb73fc05ccf22144eb68db7d00cd2bcb0902"},
