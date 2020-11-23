@@ -41,7 +41,8 @@ For a full list of available features, see the :doc:`features page <features>`.
   ``QuasiLocalMeasures`` and ``AHFinderDirect``.
 - Handle unit conversion, in particular from geometrized to physical
   (:py:mod:`~.unitconv`).
-- Visualize data with matplotlib (:py:mod:`~.visualize`).
+- [EXPERIMENTAL] Visualize data with matplotlib (:py:mod:`~.visualize`).
+- [EXPERIMENTAL] Write command-line scripts (:py:mod:`~.argparse_helper`).
 
 Installation
 ------------
@@ -78,9 +79,12 @@ Usage
    sensitivity_curves.rst
    unitconv.rst
    visualize.rst
+   argparse_helper.rst
 
 Examples
 --------
+
+You can additional examples in the folder ``example_bins``.
 
 .. toctree::
    :maxdepth: 1
@@ -114,6 +118,7 @@ Reference material (classes, functions, ...)
    sensitivity_curves_ref.rst
    unitconv_ref.rst
    visualize_ref.rst
+   argparse_helper_ref.rst
 
 Credits
 -------

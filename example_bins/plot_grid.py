@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+
+# Copyright (C) 2020 Gabriele Bozzola
+#
+# This program is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation; either version 3 of the License, or (at your option) any later
+# version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+# details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program; if not, see <https://www.gnu.org/licenses/>.
+
+import logging
+import os
+
+import matplotlib.pyplot as plt
+
+from postcactus.simdir import SimDir
+from postcactus import argparse_helper as pah
+from postcactus.visualize import setup_matplotlib, plot_contourf
+
+
+"""This script plots a grid function with options specified via command-line.
+"""
+
+if __name__ == "__main__":
+    setup_matplotlib()
+
+    desc = "Plot a given grid function"
+    parser = pah.init_argparse(desc)
+    pah.add_grid_to_parser(parser)
+    parser.add_argument(
+        "--variable", type=str, required=True, help="Variable to plot"
+    )
+    parser.add_argument(
+        "--iteration",
+        type=int,
+        default=-1,
+        help="Iteration to plot. If -1, the latest.",
+    )
+    parser.add_argument(
+        "--figname",
+        type=str,
+        help="Name of the output figure. "
+        "The default value is the name of the variable (in pdf).",
+    )
+    parser.add_argument(
+        "--interpolate",
+        action="store_true",
+        help="Interpolate to smooth data? (It takes longer to plot).",
+    )
+    args = pah.get_args(parser)
+
+    # Parse arguments
+
+    iteration = args.iteration
+    x0, x1, res = args.origin, args.corner, args.resolution
+    shape = [res, res]
+    if args.figname is None:
+        figname = args.variable
+    else:
+        figname = args.figname
+
+    logger = logging.getLogger(__name__)
+
+    if args.verbose:
+        logging.basicConfig(format="%(asctime)s - %(message)s")
+        logger.setLevel(logging.DEBUG)
+
+    logger.debug(f"Reading variable {args.variable}")
+    sim = SimDir(args.datadir)
+    var = sim.gridfunctions[args.plane][args.variable]
+    logger.debug(f"Read variable {args.variable}")
+
+    if iteration == -1:
+        iteration = var.available_iterations[-1]
+
+    time = var.time_at_iteration(iteration)
+
+    logger.debug(f"Using iteration {iteration} (time = {time})")
+
+    logger.debug(
+        f"Plotting on grid with x0 = {x0}, x1 = {x1}, shape = {shape}"
+    )
+    plot_contourf(
+        var,
+        iteration=iteration,
+        x0=x0,
+        x1=x1,
+        shape=shape,
+        xlabel=args.plane[0],
+        ylabel=args.plane[1],
+        resample=args.interpolate,
+    )
+
+    output_path = os.path.join(args.outdir, figname)
+    logger.debug(f"Saving in {output_path}")
+    plt.savefig(output_path)
