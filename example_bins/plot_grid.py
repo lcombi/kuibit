@@ -52,7 +52,12 @@ if __name__ == "__main__":
     parser.add_argument(
         "--interpolate",
         action="store_true",
-        help="Interpolate to smooth data? (It takes longer to plot).",
+        help="Whether to interpolate to smooth data (It takes longer to plot).",
+    )
+    parser.add_argument(
+        "--colorbar",
+        action="store_true",
+        help="Whether to draw the color bar.",
     )
     args = pah.get_args(parser)
 
@@ -96,6 +101,8 @@ if __name__ == "__main__":
         xlabel=args.plane[0],
         ylabel=args.plane[1],
         resample=args.interpolate,
+        colorbar=args.colorbar,
+        label=args.variable
     )
 
     output_path = os.path.join(args.outdir, figname)
