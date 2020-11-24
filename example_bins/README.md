@@ -5,3 +5,4 @@ use these scripts as good examples of `PostCactus`usage.
 
 Scripts available:
 - `plot_grid`, plot any 2D grid function on a grid specified via command-line.
+- `plot_scalar`, plot any reduction of any variable as a timeseries.
