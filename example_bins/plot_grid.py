@@ -31,9 +31,12 @@ from postcactus.visualize import setup_matplotlib, plot_contourf
 if __name__ == "__main__":
     setup_matplotlib()
 
-    desc = "Plot a given grid function"
+    desc = "Plot a given grid function."
+
     parser = pah.init_argparse(desc)
     pah.add_grid_to_parser(parser)
+    pah.add_figure_to_parser(parser)
+
     parser.add_argument(
         "--variable", type=str, required=True, help="Variable to plot"
     )
@@ -42,12 +45,6 @@ if __name__ == "__main__":
         type=int,
         default=-1,
         help="Iteration to plot. If -1, the latest.",
-    )
-    parser.add_argument(
-        "--figname",
-        type=str,
-        help="Name of the output figure. "
-        "The default value is the name of the variable (in pdf).",
     )
     parser.add_argument(
         "--interpolate",
@@ -67,7 +64,7 @@ if __name__ == "__main__":
     x0, x1, res = args.origin, args.corner, args.resolution
     shape = [res, res]
     if args.figname is None:
-        figname = args.variable
+        figname = f"{args.variable}_{args.plane}"
     else:
         figname = args.figname
 
@@ -102,7 +99,7 @@ if __name__ == "__main__":
         ylabel=args.plane[1],
         resample=args.interpolate,
         colorbar=args.colorbar,
-        label=args.variable
+        label=args.variable,
     )
 
     output_path = os.path.join(args.outdir, figname)
