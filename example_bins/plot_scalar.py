@@ -83,7 +83,9 @@ if __name__ == "__main__":
 
     logger.debug(f"Reading variable {args.variable}")
     sim = SimDir(args.datadir)
-    var = getattr(sim.timeseries, args.reduction)[args.variable]
+    reader = getattr(sim.timeseries, args.reduction)
+    logger.debug(f"Available variables {reader}")
+    var = reader[args.variable]
     logger.debug(f"Read variable {args.variable}")
 
     logger.debug("Plotting timeseries")
@@ -92,6 +94,9 @@ if __name__ == "__main__":
         plt.xscale("log")
     if args.logyaxis:
         plt.yscale("log")
+
+    plt.grid(which='major', linewidth='0.7')
+    plt.grid(which='minor', linewidth='0.2')
     plt.xlabel("t")
     plt.ylabel(f"{red} {args.variable}")
 
