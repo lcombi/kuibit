@@ -61,6 +61,22 @@ if __name__ == "__main__":
         action="store_true",
         help="Whether to use log scale.",
     )
+    parser.add(
+        "--vmin",
+        help=(
+            "Minimum value of the variable. "
+            "If logscale is True, this has to be the log."
+        ),
+        type=float,
+    )
+    parser.add(
+        "--vmax",
+        help=(
+            "Maximum value of the variable. "
+            "If logscale is True, this has to be the log."
+        ),
+        type=float,
+    )
     args = pah.get_args(parser)
 
     # Parse arguments
@@ -113,6 +129,8 @@ if __name__ == "__main__":
         resample=args.interpolate,
         colorbar=args.colorbar,
         logscale=args.logscale,
+        vmin=args.vmin,
+        vmax=args.vmax,
         label=label,
     )
 
