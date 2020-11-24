@@ -149,8 +149,9 @@ class TestVisualize(unittest.TestCase):
 
         self.assertTrue(
             isinstance(
-                viz.plot_contourf(ugd, xlabel="x", ylabel="y",
-                                  colorbar=True, label="test"),
+                viz.plot_contourf(
+                    ugd, xlabel="x", ylabel="y", colorbar=True, label="test"
+                ),
                 matplotlib.contour.QuadContourSet,
             )
         )

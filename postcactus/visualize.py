@@ -218,8 +218,14 @@ def _preprocess_plot_grid(func):
 # All the difficult stuff is in _preprocess_plot_grid
 @_preprocess_plot_grid
 def plot_contourf(
-        data, axis=None, coordinates=None, xlabel=None, ylabel=None, colorbar=False,
-        label=None, **kwargs
+    data,
+    axis=None,
+    coordinates=None,
+    xlabel=None,
+    ylabel=None,
+    colorbar=False,
+    label=None,
+    **kwargs
 ):
     """Plot 2D grid from numpy array, UniformGridData, HierarhicalGridData,
     or OneGridFunction.
