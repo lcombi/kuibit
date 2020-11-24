@@ -56,6 +56,11 @@ if __name__ == "__main__":
         action="store_true",
         help="Whether to draw the color bar.",
     )
+    parser.add_argument(
+        "--logscale",
+        action="store_true",
+        help="Whether to use log scale.",
+    )
     args = pah.get_args(parser)
 
     # Parse arguments
@@ -89,6 +94,14 @@ if __name__ == "__main__":
     logger.debug(
         f"Plotting on grid with x0 = {x0}, x1 = {x1}, shape = {shape}"
     )
+
+    if args.logscale:
+        label = f"log10({args.variable})"
+    else:
+        label = args.variable
+
+    logger.debug(f"Using label {label}")
+
     plot_contourf(
         var,
         iteration=iteration,
@@ -99,7 +112,8 @@ if __name__ == "__main__":
         ylabel=args.plane[1],
         resample=args.interpolate,
         colorbar=args.colorbar,
-        label=args.variable,
+        logscale=args.logscale,
+        label=label,
     )
 
     output_path = os.path.join(args.outdir, figname)

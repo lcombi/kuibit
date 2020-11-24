@@ -227,6 +227,7 @@ def plot_contourf(
     ylabel=None,
     colorbar=False,
     label=None,
+    logscale=False,
     **kwargs
 ):
     """Plot 2D grid from numpy array, UniformGridData, HierarhicalGridData,
@@ -237,6 +238,10 @@ def plot_contourf(
 
     # Considering all the effort put in _preprocess_plot_grid, we we can plot
     # as we were plotting normal numpy arrays.
+    if (logscale):
+        # We mask the values that are smaller or equal than 0
+        data = np.ma.log10(data)
+
     if coordinates is None:
         cf = axis.imshow(data, **kwargs)
     else:

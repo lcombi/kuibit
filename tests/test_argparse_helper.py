@@ -57,8 +57,8 @@ class TestArgparseHelper(unittest.TestCase):
 
     def test_add_figure_to_parser(self):
 
-        pah.add_figure_to_parser(self.parser, default_figname='figure')
+        pah.add_figure_to_parser(self.parser, default_figname="figure")
         # The [] essentially means "use defaults"
         args = pah.get_args(self.parser, [])
 
-        self.assertEqual(args.figname, 'figure')
+        self.assertEqual(args.figname, "figure")

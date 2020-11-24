@@ -95,8 +95,8 @@ if __name__ == "__main__":
     if args.logyaxis:
         plt.yscale("log")
 
-    plt.grid(which='major', linewidth='0.7')
-    plt.grid(which='minor', linewidth='0.2')
+    plt.grid(which="major", linewidth="0.7")
+    plt.grid(which="minor", linewidth="0.2")
     plt.xlabel("t")
     plt.ylabel(f"{red} {args.variable}")
 
