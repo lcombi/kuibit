@@ -97,7 +97,9 @@ if __name__ == "__main__":
 
     logger.debug(f"Reading variable {args.variable}")
     sim = SimDir(args.datadir)
-    var = sim.gridfunctions[args.plane][args.variable]
+    reader = sim.gridfunctions[args.plane]
+    logger.debug(f"Variables available {reader}")
+    var = reader[args.variable]
     logger.debug(f"Read variable {args.variable}")
 
     if iteration == -1:
