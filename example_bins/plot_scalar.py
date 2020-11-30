@@ -83,7 +83,7 @@ if __name__ == "__main__":
 
     logger.debug(f"Reading variable {args.variable}")
     sim = SimDir(args.datadir)
-    reader = getattr(sim.timeseries, args.reduction)
+    reader = sim.timeseries[args.reduction]
     logger.debug(f"Available variables {reader}")
     var = reader[args.variable]
     logger.debug(f"Read variable {args.variable}")
