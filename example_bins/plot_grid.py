@@ -22,7 +22,11 @@ import matplotlib.pyplot as plt
 
 from postcactus.simdir import SimDir
 from postcactus import argparse_helper as pah
-from postcactus.visualize import setup_matplotlib, plot_contourf
+from postcactus.visualize import (
+    setup_matplotlib,
+    plot_contourf,
+    add_text_to_figure_corner,
+)
 
 
 """This script plots a grid function with options specified via command-line.
@@ -135,6 +139,8 @@ if __name__ == "__main__":
         vmax=args.vmax,
         label=label,
     )
+
+    add_text_to_figure_corner(fr"$t = {time:.3f}$")
 
     output_path = os.path.join(args.outdir, figname)
     logger.debug(f"Saving in {output_path}")
