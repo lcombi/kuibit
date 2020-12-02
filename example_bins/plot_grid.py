@@ -26,6 +26,7 @@ from postcactus.visualize import (
     setup_matplotlib,
     plot_contourf,
     add_text_to_figure_corner,
+    save
 )
 
 
@@ -156,4 +157,4 @@ if __name__ == "__main__":
     output_path = os.path.join(args.outdir, figname)
     logger.debug(f"Saving in {output_path}")
     plt.tight_layout()
-    plt.savefig(output_path)
+    save(output_path, args.fig_extension, as_tikz=args.as_tikz)

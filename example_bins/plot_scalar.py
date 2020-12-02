@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 
 from postcactus.simdir import SimDir
 from postcactus import argparse_helper as pah
-from postcactus.visualize import setup_matplotlib
+from postcactus.visualize import setup_matplotlib, save
 
 
 """This script plots a timeseries with options specified via command-line.
@@ -102,4 +102,4 @@ if __name__ == "__main__":
 
     output_path = os.path.join(args.outdir, figname)
     logger.debug(f"Saving in {output_path}")
-    plt.savefig(output_path)
+    save(output_path, args.fig_extension, as_tikz=args.as_tikz)

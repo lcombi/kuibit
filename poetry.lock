@@ -1385,6 +1385,20 @@ python-versions = "*"
 test = ["pathlib2"]
 
 [[package]]
+name = "tikzplotlib"
+version = "0.9.6"
+description = "Convert matplotlib figures into TikZ/PGFPlots"
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+importlib-metadata = {version = "*", markers = "python_version < \"3.8\""}
+matplotlib = ">=1.4.0"
+numpy = "*"
+Pillow = "*"
+
+[[package]]
 name = "toml"
 version = "0.10.2"
 description = "Python Library for Tom's Obvious, Minimal Language"
@@ -1542,7 +1556,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6"
-content-hash = "d454330aae283f6a69fd94d25c5ddde4bdbc103b024fda42e9311e4fa364514d"
+content-hash = "1eaff443ff020ccc35d9e0498302fc3504ec14b9bb77a580f4778884525fb279"
 
 [metadata.files]
 alabaster = [
@@ -2439,6 +2453,10 @@ terminado = [
 testpath = [
     {file = "testpath-0.4.4-py2.py3-none-any.whl", hash = "sha256:bfcf9411ef4bf3db7579063e0546938b1edda3d69f4e1fb8756991f5951f85d4"},
     {file = "testpath-0.4.4.tar.gz", hash = "sha256:60e0a3261c149755f4399a1fff7d37523179a70fdc3abdf78de9fc2604aeec7e"},
+]
+tikzplotlib = [
+    {file = "tikzplotlib-0.9.6-py3-none-any.whl", hash = "sha256:1659a87f8f9331d30e810f9ee21db182e2f1d05ee0a154a546183727f2ce1fbc"},
+    {file = "tikzplotlib-0.9.6.tar.gz", hash = "sha256:35093d1ab76e6110016266103b49d4d28e6ca20e55ee7fdb1faf6474a8a222b3"},
 ]
 toml = [
     {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
