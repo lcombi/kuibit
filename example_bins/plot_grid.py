@@ -81,6 +81,11 @@ if __name__ == "__main__":
         ),
         type=float,
     )
+    parser.add_argument(
+        "--absolute",
+        action="store_true",
+        help="Whether to take the absolute value.",
+    )
     args = pah.get_args(parser)
 
     # Parse arguments
@@ -117,16 +122,22 @@ if __name__ == "__main__":
         f"Plotting on grid with x0 = {x0}, x1 = {x1}, shape = {shape}"
     )
 
-    if args.logscale:
-        label = f"log10({args.variable})"
+    if args.absolute:
+        data = abs(var[iteration])
+        variable = f"abs({args.variable})"
     else:
-        label = args.variable
+        data = var[iteration]
+        variable = args.variable
+
+    if args.logscale:
+        label = f"log10({variable})"
+    else:
+        label = variable
 
     logger.debug(f"Using label {label}")
 
     plot_contourf(
-        var,
-        iteration=iteration,
+        data,
         x0=x0,
         x1=x1,
         shape=shape,
