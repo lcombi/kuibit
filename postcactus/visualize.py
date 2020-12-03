@@ -261,7 +261,7 @@ def plot_contourf(
     vmin=None,
     vmax=None,
     aspect_ratio="equal",
-    **kwargs
+    **kwargs,
 ):
     """Plot 2D grid from numpy array, UniformGridData, HierarhicalGridData,
     or OneGridFunction.
@@ -335,7 +335,7 @@ def save(
     as_tikz=False,
     figure=None,
     axis=None,
-    **kwargs
+    **kwargs,
 ):
     """Save figure to outputpath.
 

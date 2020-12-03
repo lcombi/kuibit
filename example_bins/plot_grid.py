@@ -26,7 +26,7 @@ from postcactus.visualize import (
     setup_matplotlib,
     plot_contourf,
     add_text_to_figure_corner,
-    save
+    save,
 )
 
 

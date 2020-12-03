@@ -134,7 +134,5 @@ def add_figure_to_parser(parser, default_figname=None):
         "in which case the extension is .tikz",
     )
     parser.add_argument(
-        "--as-tikz",
-        action='store_true',
-        help="Save figure as TikZ figure"
+        "--as-tikz", action="store_true", help="Save figure as TikZ figure"
     )
