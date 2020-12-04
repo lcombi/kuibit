@@ -24,7 +24,7 @@ from postcactus.simdir import SimDir
 from postcactus import argparse_helper as pah
 from postcactus.visualize import (
     setup_matplotlib,
-    plot_contourf,
+    plot_color,
     add_text_to_figure_corner,
     save,
 )
@@ -36,7 +36,17 @@ from postcactus.visualize import (
 if __name__ == "__main__":
     setup_matplotlib()
 
-    desc = "Plot a given grid function."
+    desc = """Plot a given grid function.
+
+    By default, no interpolation is performed so the image may look pixelated.
+    There are two available modes of interpolation. The first is activated
+    with --multilinear-interpolation. With this, the data from the simulation
+    is interpolated with a multilinear interpolation onto the plotting grid.
+    This is accurate and uses all the information available, but it is slow.
+    A second way to perform interpolation is passing a --interpolation-method
+    argument (e.g., bicubic). With this, the plotting data is interpolated.
+    This is much faster but is not as accurate.
+    """
 
     parser = pah.init_argparse(desc)
     pah.add_grid_to_parser(parser)
@@ -52,9 +62,17 @@ if __name__ == "__main__":
         help="Iteration to plot. If -1, the latest.",
     )
     parser.add_argument(
-        "--interpolate",
+        "--multilinear-interpolate",
         action="store_true",
-        help="Whether to interpolate to smooth data (It takes longer to plot).",
+        help="Whether to interpolate to smooth data with multinear"
+        " interpolation before plotting.",
+    )
+    parser.add_argument(
+        "--interpolation-method",
+        type=str,
+        default="none",
+        help="Interpolation method for the plot. See docs of np.imshow."
+        " (default: %(default)s)",
     )
     parser.add_argument(
         "--colorbar",
@@ -137,19 +155,20 @@ if __name__ == "__main__":
 
     logger.debug(f"Using label {label}")
 
-    plot_contourf(
+    plot_color(
         data,
         x0=x0,
         x1=x1,
         shape=shape,
         xlabel=args.plane[0],
         ylabel=args.plane[1],
-        resample=args.interpolate,
+        resample=args.multilinear_interpolate,
         colorbar=args.colorbar,
         logscale=args.logscale,
         vmin=args.vmin,
         vmax=args.vmax,
         label=label,
+        interpolation=args.interpolation_method,
     )
 
     add_text_to_figure_corner(fr"$t = {time:.3f}$")
