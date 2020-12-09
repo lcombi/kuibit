@@ -34,7 +34,6 @@ if __name__ == "__main__":
     desc = "Plot a given timeseries."
 
     parser = pah.init_argparse(desc)
-    pah.add_grid_to_parser(parser)
     pah.add_figure_to_parser(parser)
 
     parser.add_argument(
