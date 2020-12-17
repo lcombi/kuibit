@@ -75,18 +75,10 @@ if __name__ == "__main__":
         type=float,
     )
     parser.add(
-        "--xmin",
-        help=(
-            "Minimum coordinate."
-        ),
-        type=float,
+        "--xmin", help=("Minimum coordinate."), type=float,
     )
     parser.add(
-        "--xmax",
-        help=(
-            "Maximum coordinate."
-        ),
-        type=float,
+        "--xmax", help=("Maximum coordinate."), type=float,
     )
     parser.add_argument(
         "--absolute",
