@@ -1542,7 +1542,7 @@ full = ["numba", "lalsuite", "pycbc"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6"
-content-hash = "0d06725194f67c0f3874ae8dae7d8a0ba543d873b4b431533175041da9c4a7e6"
+content-hash = "fe730c23967656464581b761a86bad47aff3622221a66fbe040871d39c8459fe"
 
 [metadata.files]
 alabaster = [
