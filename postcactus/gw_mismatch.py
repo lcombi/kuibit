@@ -890,9 +890,9 @@ def one_detector_mismatch_from_psi4(
     :type time_to_keep_after_max: float or None
     :param force_numba: Use numba irrespectively of the size of the input.
     :type force_numba: bool
-    :param args: All the other arguments are passed to the window
+    :param *args: All the other arguments are passed to the window
                   function.
-    :type args: anything
+    :type *args: anything
 
     """
     h1, h2 = _strains_from_psi4(
@@ -1034,9 +1034,9 @@ def network_mismatch_from_psi4(
     :type time_to_keep_after_max: float or None
     :param force_numba: Use numba irrespectively of the size of the input.
     :type force_numba: bool
-    :param args: All the other arguments are passed to the window
+    :param *args: All the other arguments are passed to the window
                   function.
-    :type args: anything
+    :type *args: anything
 
     """
     h1, h2 = _strains_from_psi4(
