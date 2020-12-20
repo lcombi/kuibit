@@ -36,7 +36,7 @@ specified via command-line. """
 if __name__ == "__main__":
     setup_matplotlib()
 
-    desc = """Plot one or more 1D grid functions as ouput by Carpet."""
+    desc = """Plot one or more 1D grid functions as output by Carpet."""
 
     parser = pah.init_argparse(desc)
     pah.add_grid_to_parser(parser)
@@ -47,7 +47,7 @@ if __name__ == "__main__":
         type=str,
         required=True,
         help="Variables to plot",
-        nargs="*",
+        nargs="+",
     )
     parser.add_argument(
         "--iteration",
