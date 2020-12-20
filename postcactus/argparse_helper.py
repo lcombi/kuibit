@@ -93,10 +93,18 @@ def add_grid_to_parser(parser):
         help="Plane to plot (default: %(default)s)",
     )
     parser.add_argument(
-        "-x0", "--origin", type=float, nargs=2, default=[0, 0],
+        "-x0",
+        "--origin",
+        type=float,
+        nargs=2,
+        default=[0, 0],
     )
     parser.add_argument(
-        "-x1", "--corner", type=float, nargs=2, default=[1, 1],
+        "-x1",
+        "--corner",
+        type=float,
+        nargs=2,
+        default=[1, 1],
     )
 
 

@@ -110,14 +110,17 @@ if __name__ == "__main__":
         ax = fig.gca(projection="3d")
         for ah in args.horizons:
             ax.plot(
-                x_coord[ah].y, y_coord[ah].y, z_coord[ah].y, label=f"Horizon {ah}"
+                x_coord[ah].y,
+                y_coord[ah].y,
+                z_coord[ah].y,
+                label=f"Horizon {ah}",
             )
         ax.set_xlabel("x")
         ax.set_ylabel("y")
         ax.set_zlabel("z")
     else:
         logger.debug("Plotting 2D")
-        coords = {'x': x_coord, 'y': y_coord, 'z': z_coord}
+        coords = {"x": x_coord, "y": y_coord, "z": z_coord}
         to_plot_x, to_plot_y = args.type
         logger.debug(f"Plotting on the x axis {to_plot_x}")
         logger.debug(f"Plotting on the y axis {to_plot_y}")
@@ -126,12 +129,14 @@ if __name__ == "__main__":
 
         for ah in args.horizons:
             ax.plot(
-                    coords[to_plot_x][ah].y, coords[to_plot_y][ah].y, label=f"Horizon {ah}"
+                coords[to_plot_x][ah].y,
+                coords[to_plot_y][ah].y,
+                label=f"Horizon {ah}",
             )
         ax.set_xlabel(to_plot_x)
         ax.set_ylabel(to_plot_y)
 
-    ax.set_aspect('equal')
+    ax.set_aspect("equal")
     ax.legend()
 
     time = x_coord[ah].tmax

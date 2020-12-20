@@ -215,7 +215,10 @@ class TestVisualize(unittest.TestCase):
         # Plot color, grid = None
         self.assertTrue(
             isinstance(
-                viz.plot_color(ugd.data_xyz,), matplotlib.image.AxesImage,
+                viz.plot_color(
+                    ugd.data_xyz,
+                ),
+                matplotlib.image.AxesImage,
             )
         )
 
@@ -236,7 +239,8 @@ class TestVisualize(unittest.TestCase):
 
         self.assertTrue(
             isinstance(
-                viz.add_text_to_figure_corner("test"), matplotlib.text.Text,
+                viz.add_text_to_figure_corner("test"),
+                matplotlib.text.Text,
             )
         )
 

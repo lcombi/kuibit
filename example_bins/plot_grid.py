@@ -80,7 +80,9 @@ if __name__ == "__main__":
         help="Whether to draw the color bar.",
     )
     parser.add_argument(
-        "--logscale", action="store_true", help="Whether to use log scale.",
+        "--logscale",
+        action="store_true",
+        help="Whether to use log scale.",
     )
     parser.add(
         "--vmin",
