@@ -59,3 +59,11 @@ summary of the changes:
 
 * Dropped support for IsolatedHorizons.
 * Simplified horizon-related classes and merged into `OneHorizon`.
+
+### Visualize
+
+* Restructured `visualize` module.
+
+### Command-line scripts
+
+* Added `argparse_helper` to assist in writing command-line scripts.
