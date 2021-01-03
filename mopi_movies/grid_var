@@ -1,0 +1,131 @@
+#!/usr/bin/env python3
+
+# Copyright (C) 2020-2021 Gabriele Bozzola
+#
+# This program is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation; either version 3 of the License, or (at your option) any later
+# version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+# details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program; if not, see <https://www.gnu.org/licenses/>.
+
+"""Make a video with 2D grid data.
+"""
+
+from postcactus.simdir import SimDir
+from postcactus import argparse_helper as pah
+from postcactus.visualize import (
+    setup_matplotlib,
+    plot_color,
+    add_text_to_figure_corner,
+    save,
+)
+
+def mopi_add_custom_options(parser):
+    parser.add_argument("--datadir", default=".", help="Data directory")
+    pah.add_grid_to_parser(parser)
+    pah.add_figure_to_parser(parser)
+    parser.add_argument(
+        "--variable", type=str, required=True, help="Variable to plot"
+    )
+    parser.add_argument(
+        "--multilinear-interpolate",
+        action="store_true",
+        help="Whether to interpolate to smooth data with multinear"
+        " interpolation before plotting.",
+    )
+    parser.add_argument(
+        "--interpolation-method",
+        type=str,
+        default="none",
+        help="Interpolation method for the plot. See docs of np.imshow."
+        " (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--colorbar",
+        action="store_true",
+        help="Whether to draw the color bar.",
+    )
+    parser.add_argument(
+        "--logscale",
+        action="store_true",
+        help="Whether to use log scale.",
+    )
+    parser.add(
+        "--vmin",
+        help=(
+            "Minimum value of the variable. "
+            "If logscale is True, this has to be the log."
+        ),
+        type=float,
+    )
+    parser.add(
+        "--vmax",
+        help=(
+            "Maximum value of the variable. "
+            "If logscale is True, this has to be the log."
+        ),
+        type=float,
+    )
+    parser.add_argument(
+        "--absolute",
+        action="store_true",
+        help="Whether to take the absolute value.",
+    )
+
+class MOPIMovie:
+
+    def __init__(self, args):
+
+        self.sim = SimDir(args.datadir)
+        self.x0, self.x1, self.res = args.origin, args.corner, args.resolution
+        self.shape = [self.res, self.res]
+        self.reader = self.sim.gridfunctions[args.plane]
+        self.var = self.reader[args.variable]
+
+        self.iterations = self.var.available_iterations
+
+        self.args = args
+
+    def get_frames(self):
+        return self.iterations
+
+    def make_frame(self, path, iteration):
+        setup_matplotlib()
+        if self.args.absolute:
+            data = abs(self.var[iteration])
+            variable = f"abs({self.args.variable})"
+        else:
+            data = self.var[iteration]
+            variable = self.args.variable
+        if self.args.logscale:
+            label = f"log10({variable})"
+        else:
+            label = variable
+
+        plot_color(
+            data,
+            x0=self.x0,
+            x1=self.x1,
+            shape=self.shape,
+            xlabel=self.args.plane[0],
+            ylabel=self.args.plane[1],
+            resample=self.args.multilinear_interpolate,
+            colorbar=self.args.colorbar,
+            logscale=self.args.logscale,
+            vmin=self.args.vmin,
+            vmax=self.args.vmax,
+            label=label,
+            interpolation=self.args.interpolation_method,
+        )
+
+        output_path = "".join(path.split(".")[:-1])
+        extension = path.split(".")[-1]
+
+        save(output_path, extension, as_tikz=False)
