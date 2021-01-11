@@ -18,9 +18,9 @@
 """Make a video with 2D grid data.
 """
 
-from postcactus.simdir import SimDir
-from postcactus import argparse_helper as pah
-from postcactus.visualize import (
+from kuibit.simdir import SimDir
+from kuibit import argparse_helper as pah
+from kuibit.visualize import (
     setup_matplotlib,
     plot_color,
     add_text_to_figure_corner,

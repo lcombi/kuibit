@@ -20,9 +20,9 @@ import os
 
 import matplotlib.pyplot as plt
 
-from postcactus.simdir import SimDir
-from postcactus import argparse_helper as pah
-from postcactus.visualize import (
+from kuibit.simdir import SimDir
+from kuibit import argparse_helper as pah
+from kuibit.visualize import (
     setup_matplotlib,
     add_text_to_figure_corner,
     save,

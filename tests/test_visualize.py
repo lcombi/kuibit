@@ -25,10 +25,10 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-from postcactus import visualize as viz
-from postcactus import grid_data as gd
-from postcactus import grid_data_utils as gdu
-from postcactus import cactus_grid_functions as cgf
+from kuibit import visualize as viz
+from kuibit import grid_data as gd
+from kuibit import grid_data_utils as gdu
+from kuibit import cactus_grid_functions as cgf
 
 
 class TestVisualize(unittest.TestCase):

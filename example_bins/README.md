@@ -1,7 +1,7 @@
-# Example executables build with PostCactus
+# Example executables build with `kuibit`
 
-In this directory, we collect working programs built with PostCactus. You can
-use these scripts as good examples of `PostCactus`usage (or you can directly use
+In this directory, we collect working programs built with `kuibit`. You can
+use these scripts as good examples of ``kuibit``usage (or you can directly use
 them).
 
 Scripts available:

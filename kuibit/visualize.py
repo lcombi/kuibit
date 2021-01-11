@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright (C) 2020-2021 Gabriele Bozzola, Wolfgang Kastaun
+# Copyright (C) 2020-2021 Gabriele Bozzola
 #
 # This program is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License along with
 # this program; if not, see <https://www.gnu.org/licenses/>.
 
-"""The :py:mod:`~.visualize` module provides functions to plot ``PostCactus``
+"""The :py:mod:`~.visualize` module provides functions to plot ``kuibit``
 objects with matplotlib.
 
 """
@@ -27,8 +27,8 @@ import numpy as np
 import tikzplotlib
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
-from postcactus import grid_data as gd
-from postcactus.cactus_grid_functions import BaseOneGridFunction
+from kuibit import grid_data as gd
+from kuibit.cactus_grid_functions import BaseOneGridFunction
 
 
 def setup_matplotlib():
