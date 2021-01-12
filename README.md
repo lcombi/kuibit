@@ -80,7 +80,10 @@ the coverage of the tests.
 The git repo of `kuibit` has an `experimental` branch, which contains
 modules for visualization and several general-purpose scripts (e.g., to plot a
 given grid variable via command-line). It is worth to have a look at that branch
-too.
+too. The `experimental` branch is available on TestPYPI:
+``` bash
+pip3 install --index-url https://test.pypi.org/simple/ kuibit
+```
 
 ## What is a _kuibit_?
 
