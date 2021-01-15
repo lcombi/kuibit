@@ -24,7 +24,6 @@ import warnings
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-import tikzplotlib
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 from kuibit import grid_data as gd
@@ -402,6 +401,8 @@ def save(
     """
 
     if as_tikz:
+        import tikzplotlib
+
         figurepath = f"{outputpath}.tikz"
         tikzplotlib.save(figurepath, **kwargs)
     else:
