@@ -18,5 +18,7 @@ Scripts available:
   3D or a projection on a plane).
 - `plot_ah_separation`, plot the coordinate separation between the centroids of
   two given apparent horizons.
+- `plot_constraints`, plot the absolute value of the violation of the
+  constraints over time.
 - `print_available_timeseries`, prints the list of timeseries that can `kuibit`
   can access.
