@@ -21,5 +21,7 @@ Scripts available:
 - `plot_constraints`, plot the absolute value of the violation of the
   constraints over time.
 - `plot_psi4`, plot Psi4 as measured at a given distance.
+- `plot_gw_energy`, plot the instantaneous power and cumulative energy lost via
+   gravitational waves as measured at a given distance.
 - `print_available_timeseries`, prints the list of timeseries that can `kuibit`
   can access.
