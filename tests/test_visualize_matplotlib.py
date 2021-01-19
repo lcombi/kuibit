@@ -25,13 +25,13 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-from kuibit import visualize as viz
+from kuibit import visualize_matplotlib as viz
 from kuibit import grid_data as gd
 from kuibit import grid_data_utils as gdu
 from kuibit import cactus_grid_functions as cgf
 
 
-class TestVisualize(unittest.TestCase):
+class TestVisualizeMatplotlib(unittest.TestCase):
     def setUp(self):
         self.fig, (self.ax1, self.ax2) = plt.subplots(2)
 

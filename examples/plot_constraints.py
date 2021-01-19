@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 
 from kuibit.simdir import SimDir
 from kuibit import argparse_helper as pah
-from kuibit.visualize import (
+from kuibit.visualize_matplotlib import (
     setup_matplotlib,
     save,
 )
