@@ -20,7 +20,7 @@ scipy = "^1.5.2"
 h5py = "^2.10.0"
 matplotlib = "^2.0.0"
 ConfigArgParse = "^1.2.3"
-motionpicture = "^0.1.2"
+motionpicture = { git = "https://github.com/Sbozzolo/motionpicture.git", optional = true }
 numba = { version = "^0.51.2", optional = true }
 lalsuite = { version = "^6.77", optional = true }
 pycbc = { version = "^1.16.10", optional = true }
@@ -35,7 +35,7 @@ jupyter = "^1.0.0"
 mayavi = "^4.7.2"
 
 [tool.poetry.extras]
-full = ["numba", "lalsuite", "pycbc", "tikzplotlib"]
+full = ["numba", "lalsuite", "pycbc", "tikzplotlib", "motionpicture"]
 with_pycbc = ["lalsuite", "pycbc"]
 with_numba = ["numba"]
 with_tikz = ["tikzplotlib"]
