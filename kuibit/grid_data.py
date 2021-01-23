@@ -491,7 +491,7 @@ class UniformGrid:
 
         # A pythonic way to write this function is:
         # if np.any(point < (self.lowest_vertex)) or np.any(
-        #     point > (self.highest_vertex)
+        #     point >= (self.highest_vertex)
         # ):
         #     return False
         # return True
