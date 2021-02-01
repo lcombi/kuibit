@@ -66,12 +66,15 @@ if __name__ == "__main__":
         figname = args.figname
 
     sim = SimDir(args.datadir)
+
+    radius = sim.gravitationalwaves.radii[args.detector_num]
+
     logger.debug(f"Computing energy")
-    energy = sim.gravitationalwaves[args.detector_num].get_total_energy(args.pcut)
+    energy = sim.gravitationalwaves[radius].get_total_energy(args.pcut)
     logger.debug(f"Computed energy")
 
     logger.debug(f"Computing power")
-    power = sim.gravitationalwaves[args.detector_num].get_total_power(args.pcut)
+    power = sim.gravitationalwaves[radius].get_total_power(args.pcut)
     logger.debug(f"Computed power ")
 
     logger.debug(f"Plotting")
