@@ -17,7 +17,7 @@ documentation = "https://sbozzolo.github.io/kuibit"
 python = "^3.6"
 numpy = "^1.18.5"
 scipy = "^1.5.2"
-h5py = "^2.10.0"
+h5py = ">=2.10.0"
 matplotlib = ">=2.0.0"
 ConfigArgParse = "^1.2.3"
 motionpicture = { git = "https://github.com/Sbozzolo/motionpicture.git", optional = true }
