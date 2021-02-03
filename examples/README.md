@@ -27,3 +27,5 @@ Scripts available:
    gravitational waves as measured at a given distance.
 - `print_available_timeseries`, prints the list of timeseries that can `kuibit`
   can access.
+- `print_available_iterations`, prints the list of iterations available for a given
+  variable.
