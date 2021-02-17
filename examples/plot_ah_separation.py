@@ -22,6 +22,7 @@ import matplotlib.pyplot as plt
 
 from kuibit.simdir import SimDir
 from kuibit import argparse_helper as pah
+from kuibit.series import sample_common
 from kuibit.visualize_matplotlib import (
     setup_matplotlib,
     save,
@@ -77,15 +78,29 @@ if __name__ == "__main__":
         if ah not in sim_hor.available_apparent_horizons:
             raise ValueError(f"Apparent horizons {ah} is not available")
 
-    logger.debug(f"Reading horizons and computing separation")
+    logger.debug("Reading horizons and computing separation")
     # We can use any index for the qlm index, it will be thrown away
     ah1 = sim_hor[0, args.horizons[0]].ah
     ah2 = sim_hor[0, args.horizons[1]].ah
 
+    # We resample to make sure that everything is defined on the same
+    # interval.
+    (cen1_x, cen1_y, cen1_z, cen2_x, cen2_y, cen2_z,) = sample_common(
+        (
+            ah1.centroid_x,
+            ah1.centroid_y,
+            ah1.centroid_z,
+            ah2.centroid_x,
+            ah2.centroid_y,
+            ah2.centroid_z,
+        ),
+        resample=True,
+    )
+
     separation = (
-        (ah1.centroid_x - ah2.centroid_x) ** 2
-        + (ah1.centroid_y - ah2.centroid_y) ** 2
-        + (ah1.centroid_z - ah2.centroid_z) ** 2
+        (cen1_x - cen2_x) ** 2
+        + (cen1_y - cen2_y) ** 2
+        + (cen1_z - cen2_z) ** 2
     ).sqrt()
 
     # Plot
