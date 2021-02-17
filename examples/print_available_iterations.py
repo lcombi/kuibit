@@ -46,7 +46,9 @@ if __name__ == "__main__":
     # We loop over dimensions
     if args.dimension is not None:
         if args.variable not in reader[args.dimension]:
-            raise RuntimeError(f"Variable {args.variable} of dimension {args.dimension} not available")
+            raise RuntimeError(
+                f"Variable {args.variable} of dimension {args.dimension} not available"
+            )
         for it in reader[args.dimension][args.variable].available_iterations:
             print(it, end=" ")
         print()

@@ -85,8 +85,12 @@ if __name__ == "__main__":
 
     logger.debug(f"Plotting Psi4")
 
-    plt.plot(psi4.real(), label=fr"$\Re \Psi_4^{{{args.mult_l}{args.mult_l}}}$")
-    plt.plot(psi4.imag(), label=fr"$\Im \Psi_4^{{{args.mult_l}{args.mult_l}}}$")
+    plt.plot(
+        psi4.real(), label=fr"$\Re \Psi_4^{{{args.mult_l}{args.mult_l}}}$"
+    )
+    plt.plot(
+        psi4.imag(), label=fr"$\Im \Psi_4^{{{args.mult_l}{args.mult_l}}}$"
+    )
 
     plt.legend()
     plt.xlabel("Time")

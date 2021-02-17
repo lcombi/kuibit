@@ -56,13 +56,10 @@ if __name__ == "__main__":
 
     sim = SimDir(args.datadir)
 
-
     if "physical_time_per_hour" not in sim.ts.scalar:
-        raise ValueError(
-            "physical_time_per_hour not available"
-        )
+        raise ValueError("physical_time_per_hour not available")
 
-    phys_time = sim.ts.scalar['physical_time_per_hour']
+    phys_time = sim.ts.scalar["physical_time_per_hour"]
 
     logger.debug(f"Plotting physical_time_per_hour")
 
